@@ -1,0 +1,10 @@
+[
+  {
+    "site_id": "hivehq",
+    "domain": "hivehq.nz",
+    "github_installation_id": 0,
+    "github_repo_id": 0,
+    "branch": "refs/heads/main",
+    "deploy_root": "/srv/sites/hivehq"
+  }
+]

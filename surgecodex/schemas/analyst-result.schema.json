@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "note_body", "analysis_markdown", "next_stage", "test_strategy"],
+  "properties": {
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "note_body": {
+      "type": "string",
+      "minLength": 1
+    },
+    "analysis_markdown": {
+      "type": "string",
+      "minLength": 1
+    },
+    "next_stage": {
+      "type": "string",
+      "const": "developer"
+    },
+    "test_strategy": {
+      "type": "string",
+      "enum": ["automated", "manual", "mixed"]
+    }
+  }
+}

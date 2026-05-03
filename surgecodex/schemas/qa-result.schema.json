@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision", "summary", "note_body", "qa_report_markdown", "next_stage"],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": ["pass", "fail", "awaiting_client", "closed"]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "note_body": {
+      "type": "string",
+      "minLength": 1
+    },
+    "qa_report_markdown": {
+      "type": "string",
+      "minLength": 1
+    },
+    "next_stage": {
+      "type": "string",
+      "enum": ["release-manager", "developer", "none"]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["summary", "note_body", "release_markdown", "final_status"],
+  "properties": {
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "note_body": {
+      "type": "string",
+      "minLength": 1
+    },
+    "release_markdown": {
+      "type": "string",
+      "minLength": 1
+    },
+    "final_status": {
+      "type": "string",
+      "enum": ["awaiting_client", "closed"]
+    }
+  }
+}

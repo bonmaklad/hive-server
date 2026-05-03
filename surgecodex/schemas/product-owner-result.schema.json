@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["decision", "kind_assessment", "summary", "note_body", "intake_markdown", "next_stage"],
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": ["analysis", "awaiting_client", "closed"]
+    },
+    "kind_assessment": {
+      "type": "string",
+      "enum": ["bug", "issue", "change_request"]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "note_body": {
+      "type": "string",
+      "minLength": 1
+    },
+    "intake_markdown": {
+      "type": "string",
+      "minLength": 1
+    },
+    "next_stage": {
+      "type": "string",
+      "enum": ["analyst", "none"]
+    }
+  }
+}

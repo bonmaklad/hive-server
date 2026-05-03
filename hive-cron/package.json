@@ -1,0 +1,13 @@
+{
+  "name": "hive-cron",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "run:invoices": "node invoice-memberships.js",
+    "run:invoices:dry": "DRY_RUN=1 node invoice-memberships.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "dotenv": "^16.4.5"
+  }
+}

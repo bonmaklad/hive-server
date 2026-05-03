@@ -1,0 +1,37 @@
+# Secrets and environment
+**/.env
+**/.env.*
+/hive-deploy/github-app.pem
+/surgecodex/.ssh/
+
+# Dependencies
+/node_modules/
+**/node_modules/
+
+# Build and cache output
+**/dist/
+**/build/
+**/.next/
+**/__pycache__/
+*.pyc
+
+# Logs and transient output
+**/logs/
+*.log
+*.bak
+*.bak.*
+
+# Runtime and generated data
+/containerd/
+/hive/workspaces/
+/n8n/data/
+/supabase/
+/hive-platform/supabase/.branches/
+/hive-platform/supabase/.temp/
+/surgecodex/runtime/
+/surgecodex/clients/dgp/
+/surgecodex/clients/sjs/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
