@@ -6,7 +6,7 @@
   "properties": {
     "decision": {
       "type": "string",
-      "enum": ["analysis", "awaiting_client", "closed"]
+      "enum": ["analysis", "design", "triaged", "awaiting_client", "closed"]
     },
     "kind_assessment": {
       "type": "string",
@@ -26,7 +26,7 @@
     },
     "next_stage": {
       "type": "string",
-      "enum": ["analyst", "none"]
+      "enum": ["analyst", "designer", "none"]
     }
   }
 }

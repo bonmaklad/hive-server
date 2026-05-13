@@ -32,7 +32,7 @@ Implement the minimum viable execution loop:
 ### Product Owner
 
 - `analysis` when the ticket is real and actionable
-- `awaiting_client` when more information is needed
+- `triaged` when more information is needed before automation can continue
 - `closed` when the ticket is not valid or not appropriate
 
 ### Analyst, Developer, QA, Release

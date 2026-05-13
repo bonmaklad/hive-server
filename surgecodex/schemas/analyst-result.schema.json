@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object",
   "additionalProperties": false,
-  "required": ["summary", "note_body", "analysis_markdown", "next_stage", "test_strategy"],
+  "required": ["summary", "note_body", "analysis_markdown", "next_stage", "test_strategy", "tasks"],
   "properties": {
     "summary": {
       "type": "string",
@@ -23,6 +23,50 @@
     "test_strategy": {
       "type": "string",
       "enum": ["automated", "manual", "mixed"]
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["task_id", "title", "goal", "dependency_ids", "target_paths", "acceptance_criteria", "test_focus"],
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "goal": {
+            "type": "string",
+            "minLength": 1
+          },
+          "dependency_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "target_paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "acceptance_criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "test_focus": {
+            "type": "string"
+          }
+        }
+      }
     }
   }
 }

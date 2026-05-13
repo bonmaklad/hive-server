@@ -68,10 +68,11 @@ runtime/{slug}/tickets/{ticket-number}/
   attachments.json
   media-summary.md
   01-intake.md
-  02-analysis.md
-  03-dev-plan.md
-  04-qa-report.md
-  05-release.md
+  02-design.md
+  03-analysis.md
+  04-dev-plan.md
+  05-qa-report.md
+  06-release.md
   responses/
 ```
 
@@ -88,6 +89,7 @@ If the file already exists for a different ticket, the client is skipped for tha
 ## Status Flow
 
 - `submitted` runs Product Owner
+- `triaged` holds tickets that need clarification and returns them to the queue after a later human note/comment arrives
 - `analysis` runs Analyst
 - `development` runs Developer
 - `testing` runs QA/Tester

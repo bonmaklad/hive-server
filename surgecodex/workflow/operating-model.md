@@ -21,9 +21,10 @@ Create a repeatable, auditable delivery workflow for multiple clients using Code
 Purpose:
 
 - Confirm the client.
-- Confirm the work item is in scope.
-- Classify the work item as bug, issue, or change request.
-- Reject, defer, or pass the ticket onward.
+- Classify the work item strictly as bug, issue, or change request.
+- Reject disguised feature work that is presented as a bug or issue.
+- Decide whether the work is real, valuable, viable, and safely bounded.
+- Reject, triage, defer, or pass the ticket onward.
 
 Outputs:
 
@@ -32,7 +33,22 @@ Outputs:
 - Scope statement
 - Initial assumptions and exclusions
 
-### 2. Analyst
+### 2. Designer
+
+Purpose:
+
+- Shape approved change requests before analysis starts.
+- Align feature design with the existing product flows and design principles.
+- Produce UI and UX requirements that are practical for the current codebase.
+
+Outputs:
+
+- Design requirements
+- UI and UX constraints
+- Interaction states and flow notes
+- Design principles for the feature
+
+### 3. Analyst
 
 Purpose:
 
@@ -50,23 +66,51 @@ Outputs:
 - BDD acceptance criteria
 - Test strategy decision
 
-### 3. Developer
+### 4. Developer Orchestrator
 
 Purpose:
 
-- Turn the analyst package into an implementation job.
-- Break the change into concrete tasks.
-- Make the code changes.
-- Add or update tests where appropriate.
+- Take the analyst task graph and coordinate task execution.
+- Launch task-scoped developer work in isolated branches or worktrees.
+- Keep task execution bounded and dependency-aware.
+- Prepare integrated work for peer review and QA.
 
 Outputs:
 
 - Development plan
-- Code changes
-- Test changes
+- Task state
+- Integrated code changes
 - Handoff summary to QA
 
-### 4. QA/Tester
+### 5. Task Developer
+
+Purpose:
+
+- Implement one assigned task only.
+- Stay inside the task boundary and target paths.
+- Add or update task-scoped tests where appropriate.
+
+Outputs:
+
+- Task code changes
+- Task test changes
+- Task handoff summary
+
+### 6. Peer Reviewer
+
+Purpose:
+
+- Review each task as a senior developer.
+- Improve code directly when the fix is local and safe.
+- Block only when the task cannot be corrected safely within scope.
+
+Outputs:
+
+- Peer review findings
+- Improved task code
+- Approval or block decision
+
+### 7. QA/Tester
 
 Purpose:
 
@@ -82,7 +126,7 @@ Outputs:
 - Pass/fail decision
 - Return-to-dev actions if failed
 
-### 5. Release Manager
+### 8. Release Manager
 
 Purpose:
 
@@ -103,9 +147,12 @@ Outputs:
 - `po_review`
 - `po_rejected`
 - `po_approved`
+- `design_in_progress`
+- `design_complete`
 - `analysis_in_progress`
 - `analysis_complete`
 - `development_in_progress`
+- `task_execution_in_progress`
 - `qa_in_progress`
 - `qa_failed`
 - `development_rework`
@@ -117,8 +164,10 @@ Outputs:
 ## Mandatory Handoff Rules
 
 - Product Owner must not write requirements.
+- Designer must not skip codebase and flow review for change requests.
 - Analyst must not write production code.
 - Developer must not self-approve release readiness.
+- Peer Reviewer must not widen scope beyond the assigned task.
 - QA must not rubber-stamp without evidence.
 - Release Manager must not implement feature code.
 
@@ -137,5 +186,6 @@ Before Analyst or Developer work begins:
 1. Confirm the client repo path.
 2. Fetch and pull latest changes from the remote.
 3. Confirm the working branch is not `main` or `master`.
-4. If the expected branch exists, use `dev` unless there is a better ticket-specific branch policy.
-5. If only `main` or `master` exists, Release Manager must create a new non-production branch before push.
+4. Create a ticket integration branch for the active ticket.
+5. Run task work on isolated task branches or worktrees derived from the ticket integration branch.
+6. Release Manager merges the integration branch into the chosen non-production release branch before push.
